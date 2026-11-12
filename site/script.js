@@ -76,13 +76,13 @@ function renderShots(){
     box.appendChild(row);
   });
 }
-function findSetting(model,label){var m=BYNAME[model];for(var j=0;j<m.settings.length;j++)if(m.settings[j].setting===label)return j;return 0;}
+function findSetting(model,label){var m=BYNAME[model];if(!m)return 0;for(var j=0;j<m.settings.length;j++)if(m.settings[j].setting===label)return j;return 0;}
 var PRESETS={
   film:[{model:"Seedance 2.0",setting:"8s · 720p · 16:9 (default)",count:4},{model:"Nano Banana Pro",setting:"1K",count:3}],
   budget:[{model:"Kling 3.0",setting:"5s · 16:9 (default)",count:6},{model:"Nano Banana 2",setting:"1K",count:3}],
   clear:[]
 };
-$$("[data-preset]").forEach(function(b){b.addEventListener("click",function(){shots=PRESETS[b.getAttribute("data-preset")].map(function(p){return {model:p.model,setting:findSetting(p.model,p.setting),count:p.count};});renderShots();update();toast(b.textContent);});});
+$$("[data-preset]").forEach(function(b){b.addEventListener("click",function(){shots=PRESETS[b.getAttribute("data-preset")].filter(function(p){return BYNAME[p.model];}).map(function(p){return {model:p.model,setting:findSetting(p.model,p.setting),count:p.count};});renderShots();update();toast(b.textContent);});});
 $("#addShot").addEventListener("click",function(){shots.push({model:"Seedance 2.0",setting:0,count:1});renderShots();update();var r=$$(".shot");if(r.length)r[r.length-1].querySelector("select").focus();});
 
 var coverKind="video";
@@ -193,14 +193,17 @@ var G={
 var gsel=$("#fGenre");Object.keys(G).forEach(function(k){gsel.appendChild(el("option",{value:k,text:G[k].label}));});
 
 var DEFAULT_BRIEF=C.week+" · "+C.genre+" · "+C.theme+"\n"+C.tagline+"\n\n"+C.brief+"\n"+C.beats.map(function(b){return b[0]+" "+b[1];}).join("\n")+"\n\nRules: "+C.rules.join(". ")+".\nFilm submissions close "+C.deadline.replace(" (film submissions close)","")+".";
-var brief={week:C.week,genre:"horror",title:C.theme,min:25,max:35,target:30,aspect:"9:16",res:"720p",model:"Seedance 2.0 Fast",deadline:C.deadline,rules:C.rules.slice(),isDefault:true,tag:C.tagline};
+var CG=window.WTK_genreKey?window.WTK_genreKey(C.genre):"horror";if(!G[CG])CG="horror";
+var CL=C.length||{min:25,max:35,target:30};var CM=C.model||"Seedance 2.0 Fast";
+function defaultBrief(){return {week:C.week,genre:CG,title:C.theme,min:CL.min,max:CL.max,target:CL.target,aspect:C.aspect||"9:16",res:C.resolution||"720p",model:CM,deadline:C.deadline.replace(" (film submissions close)",""),rules:C.rules.slice(),isDefault:true,tag:C.tagline};}
+var brief=defaultBrief();
 
 function fillBriefCard(){
   $("#bWeek").textContent=brief.week||"Weekly challenge";$("#bGenre").textContent=G[brief.genre].label;
   $("#bTitle").textContent=brief.title||"Your film";$("#bTag").textContent=brief.tag||"";
   var f=$("#bFacts");f.innerHTML="";
   [["Length",brief.min===brief.max?brief.target+" s":brief.min+"–"+brief.max+" s (target "+brief.target+")"],["Format",brief.aspect+" · "+brief.res],["Model",brief.model],["Deadline",brief.deadline||"See the brief"]].forEach(function(x){f.appendChild(el("div",{},[el("dt",{text:x[0]}),el("dd",{text:x[1]})]));});
-  var st=$("#bStatus");if(brief.isDefault&&C.status_note){st.hidden=false;st.textContent=C.status_note+" Viral numbers lock "+C.viral_lock+"; results "+C.results+".";}else st.hidden=true;
+  var st=$("#bStatus");var note=window.WTK_statusNote?window.WTK_statusNote(C,Date.now()):(C.status_note||"");if(brief.isDefault&&note){st.hidden=false;st.textContent=note+(C.viral_lock?" Viral numbers lock "+C.viral_lock+(C.results?"; results "+C.results:"")+".":"");}else st.hidden=true;
   $("#bSrc").href=C.source;$("#bRead").textContent=niceDate(C.read);
 }
 function setFields(gk,keepTitle){var d=G[gk].d;$("#fGenre").value=gk;if(!keepTitle)$("#fTitle").value=d.title;$("#fLead").value=d.lead;$("#fLook").value=d.look;$("#fSetting").value=d.setting;$("#fHook").value=d.hook;}
@@ -305,8 +308,10 @@ function renderKit(){
   o.appendChild(sec("Estimated credit cost",cl.concat([el("p",{class:"hint",text:"From the Credit Planner's published prices only. The Generate button shows the final price."})]),null));
 }
 function loadDefault(){
-  brief={week:C.week,genre:"horror",title:C.theme,min:25,max:35,target:30,aspect:"9:16",res:"720p",model:"Seedance 2.0 Fast",deadline:C.deadline.replace(" (film submissions close)",""),rules:C.rules.slice(),isDefault:true,tag:C.tagline};
-  $("#briefText").value=DEFAULT_BRIEF;setFields("horror");$("#fRuntime").value=30;$("#fModel").value="Seedance 2.0 Fast";fillBriefCard();build();
+  brief=defaultBrief();
+  $("#briefText").value=DEFAULT_BRIEF;setFields(CG);$("#fTitle").value=C.theme;
+  if(C.theme!==G[CG].d.title){var ab=(C.brief||"").match(/\babout\s+([^.\n]{6,90})/i);if(ab)$("#fHook").value=ab[1].trim();}
+  $("#fRuntime").value=CL.target;$("#fModel").value=CM;fillBriefCard();build();
 }
 $("#readBrief").addEventListener("click",function(){
   var txt=$("#briefText").value;if(txt.trim()===DEFAULT_BRIEF.trim()){loadDefault();toast("This week's brief");return;}
@@ -322,7 +327,7 @@ $("#buildKit").addEventListener("click",function(){build();toast("Kit rebuilt");
 
 /* init */
 renderPrices();
-shots=PRESETS.film.map(function(p){return {model:p.model,setting:findSetting(p.model,p.setting),count:p.count};});
+shots=PRESETS.film.filter(function(p){return BYNAME[p.model];}).map(function(p){return {model:p.model,setting:findSetting(p.model,p.setting),count:p.count};});
 renderShots();update();loadDefault();
 window.WTK={parseBrief:parseBrief,allText:function(){return allText();}};
 })();
