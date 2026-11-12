@@ -9,10 +9,20 @@ function usd(n){return "$"+(n*D.credit_usd).toFixed(2);}
 function niceDate(iso){var p=iso.split("-");var m=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+p[1]-1];return (+p[2])+" "+m+" "+p[0];}
 var NP="price shown on Generate";
 var toastT;function toast(t){var e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toastT);toastT=setTimeout(function(){e.classList.remove("on");},1600);}
-function copyText(t){
-  function fallback(){var ta=el("textarea",{"aria-hidden":"true"});ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast("Copied");}catch(e){toast("Copy failed");}document.body.removeChild(ta);}
-  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast("Copied");},fallback);}else fallback();
+function copyText(t,msg){msg=msg||"Copied";
+  function fallback(){var ta=el("textarea",{"aria-hidden":"true"});ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast(msg);}catch(e){toast("Copy failed");}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast(msg);},fallback);}else fallback();
 }
+
+var FX=window.WTK_F;
+function shareLink(state,label){
+  var r=FX.shareHash(state);var url=location.origin+location.pathname+r.hash;
+  var done=function(){if(r.droppedBrief)toast("Link copied (brief too long, fields kept)");};
+  if(navigator.share){navigator.share({title:"Wandura Toolkit",text:label,url:url}).then(done,function(e){if(!e||e.name!=="AbortError")copyText(url,"Link copied");});}
+  else copyText(url,r.droppedBrief?"Link copied (brief too long, fields kept)":"Link copied");
+  return url;
+}
+function shareNote(msgs){var n=$("#shareNote");if(!msgs||!msgs.length){n.hidden=true;n.textContent="";return;}n.hidden=false;n.textContent=msgs.join(" ");}
 
 /* ---------- theme ---------- */
 var root=document.documentElement;
@@ -105,6 +115,82 @@ function renderCover(){
     box.appendChild(card);
   });
 }
+/* ---------- model compare ---------- */
+var cmpKind="video";
+var CMP_PREF={video:["Seedance 2.0","Kling 3.0","Veo 3.1"],image:["Nano Banana Pro","Nano Banana 2","Seedream 5.0 Lite"]};
+var cmpPick={};
+function pubSettings(m){return m.settings.filter(function(s){return s.credits!=null;});}
+function cmpModels(kind){return CAT.filter(function(m){return m.kind===kind;});}
+function cmpDefault(kind){
+  var ms=cmpModels(kind);var priced=ms.filter(function(m){return !m.unpublished&&pubSettings(m).length;});
+  var out=[];CMP_PREF[kind].forEach(function(n){if(BYNAME[n]&&priced.indexOf(BYNAME[n])>=0&&out.length<3)out.push(n);});
+  priced.forEach(function(m){if(out.indexOf(m.name)<0&&out.length<3)out.push(m.name);});
+  return out.map(function(n){var s=pubSettings(BYNAME[n])[0];return {model:n,setting:s?s.setting:""};});
+}
+function cmpSlots(){if(!cmpPick[cmpKind])cmpPick[cmpKind]=cmpDefault(cmpKind);return cmpPick[cmpKind];}
+function cmpEntry(p){var m=BYNAME[p.model];if(!m)return null;if(m.unpublished)return {name:m.name,setting:"",credits:null};
+  var ps=pubSettings(m);var s=ps.filter(function(x){return x.setting===p.setting;})[0]||ps[0];if(!s)return {name:m.name,setting:"",credits:null};
+  return {name:m.name,setting:s.setting,credits:s.credits,seconds:s.seconds,resolution:s.resolution};}
+function renderCmpPick(){
+  var box=$("#cmpPick");box.innerHTML="";var slots=cmpSlots();
+  for(var i=0;i<3;i++)(function(i){
+    var p=slots[i];var L="ABC"[i];
+    var ms=el("select",{"aria-label":"Model "+L});
+    if(i===2)ms.appendChild(el("option",{value:"",text:"None"}));
+    cmpModels(cmpKind).forEach(function(m){var o=el("option",{value:m.name,text:m.name+(m.unpublished?" (price not published)":"")});if(p&&p.model===m.name)o.selected=true;ms.appendChild(o);});
+    if(!p&&i===2)ms.value="";
+    var ss=el("select",{"aria-label":"Setting for model "+L});
+    var m=p&&BYNAME[p.model];
+    if(m){var ps=m.unpublished?[]:pubSettings(m);if(!ps.length)ss.appendChild(el("option",{value:"",text:NP}));ps.forEach(function(s){var o=el("option",{value:s.setting,text:s.setting});if(s.setting===p.setting)o.selected=true;ss.appendChild(o);});}
+    else{ss.appendChild(el("option",{value:"",text:"Pick a model"}));ss.disabled=true;}
+    ms.addEventListener("change",function(){if(!ms.value){slots.splice(2,1);}else{var mm=BYNAME[ms.value];var s0=pubSettings(mm)[0];slots[i]={model:ms.value,setting:s0?s0.setting:""};}renderCmpPick();renderCompare();});
+    ss.addEventListener("change",function(){slots[i].setting=ss.value;renderCompare();});
+    box.appendChild(el("div",{class:"cmp-slot"},[el("span",{class:"cmp-l",text:L}),el("label",{class:"field"},[el("span",{text:"Model"}),ms]),el("label",{class:"field"},[el("span",{text:"Setting"}),ss])]));
+  })(i);
+}
+function nfmt(x,d){var r=Math.round(x*Math.pow(10,d))/Math.pow(10,d);return r.toLocaleString("en-US",{maximumFractionDigits:d});}
+function renderCompare(){
+  var bal=balance();var slots=cmpSlots();var items=slots.map(cmpEntry).filter(Boolean);
+  var res=FX.compare(items,bal,D.credit_usd);var R=res.rows;var vid=cmpKind==="video";var unit=vid?"clips":"images";
+  $("#cmpHint").textContent="Pick 2 or 3 models and a published setting for each. Uses your balance from step 1: "+fmt(bal)+" credits.";
+  var out=$("#cmpOut");out.innerHTML="";
+  var g=el("div",{class:"cmp-grid"});g.style.setProperty("--n",R.length);
+  g.appendChild(el("div",{class:"cmp-corner"}));
+  R.forEach(function(r){g.appendChild(el("div",{class:"cmp-h"},[el("b",{text:r.name}),el("small",{text:r.priced?r.setting:"No published price"})]));});
+  function row(label,fn,hi,tag){g.appendChild(el("div",{class:"cmp-k",text:label}));R.forEach(function(r,i){var c=el("div",{class:"cmp-v"+(hi&&hi.indexOf(i)>=0?" best":"")});var v=fn(r);if(v==null){c.classList.add("na");c.textContent="–";}else if(typeof v==="string")c.textContent=v;else v.forEach(function(x){c.appendChild(x);});if(hi&&hi.indexOf(i)>=0)c.appendChild(el("span",{class:"tag",text:tag}));g.appendChild(c);});}
+  row(vid?"Credits per clip":"Credits per image",function(r){return r.priced?[el("b",{text:fmt(r.credits)})]:[el("span",{class:"np",text:NP})];});
+  if(vid)row("Clip length",function(r){return r.priced?(r.seconds?r.seconds+" s":"not stated"):null;});
+  row("Resolution",function(r){return r.priced?(r.resolution||"not stated"):null;});
+  if(vid)row("Per second of video",function(r){return r.perSec==null?(r.priced?"not stated":null):[el("b",{text:nfmt(r.perSec,1)+" cr"}),el("small",{text:"$"+r.usdPerSec.toFixed(3).replace(/0$/,"")+"/s"})];},res.cheapestPerSec,"Cheapest");
+  row(vid?"Cost per clip":"Cost per image",function(r){return r.priced?"$"+r.usd.toFixed(2):null;});
+  row(cap(unit)+" for "+fmt(bal)+" credits",function(r){return r.priced?[el("b",{text:fmt(r.clips)})]:null;},res.mostClips,"Most");
+  out.appendChild(g);
+  var sum=[];
+  if(res.cheapestPerSec.length)sum.push("Cheapest per second: "+res.cheapestPerSec.map(function(i){return R[i].name;}).join(", ")+" ("+nfmt(R[res.cheapestPerSec[0]].perSec,1)+" credits/s).");
+  if(res.mostClips.length)sum.push("Most "+unit+" for your balance: "+res.mostClips.map(function(i){return R[i].name;}).join(", ")+" ("+fmt(R[res.mostClips[0]].clips)+").");
+  var np=R.filter(function(r){return !r.priced;}).map(function(r){return r.name;});
+  if(np.length)sum.push(np.join(", ")+": "+NP+", so left out of the highlights.");
+  if(sum.length)out.appendChild(el("p",{class:"hint cmp-sum",text:sum.join(" ")}));
+}
+$$("#cmpKind button").forEach(function(b){b.addEventListener("click",function(){cmpKind=b.getAttribute("data-kind");$$("#cmpKind button").forEach(function(x){x.setAttribute("aria-checked",x===b?"true":"false");});renderCmpPick();renderCompare();});});
+
+/* ---------- share: planner ---------- */
+function plannerState(){return {v:1,t:"p",p:plan,b:Math.max(0,Math.floor(+$("#balance").value||0)),k:+packSel.value||0,s:shots.map(function(s){return [s.model,BYNAME[s.model].settings[s.setting].setting,s.count];})};}
+function restorePlanner(o){
+  var notes=[];showTab("tab-planner");
+  var p=PLANS.filter(function(x){return x.id===o.p;})[0];var b=Math.max(0,Math.floor(+o.b||0));
+  if(p&&p.credits!=null){choosePlan(p.id);if(p.credits!==b)notes.push(p.label+" now comes with "+fmt(p.credits)+" credits (the link had "+fmt(b)+").");}
+  else{$("#balance").value=b;var m=PLANS.filter(function(x){return x.credits===b;})[0];plan=m?m.id:"custom";$$("button",seg).forEach(function(x){x.setAttribute("aria-checked",x.getAttribute("data-plan")===plan?"true":"false");});}
+  var k=+o.k||0;if(k&&!$$("option",packSel).some(function(op){return +op.value===k;})){notes.push("The shared credit pack (+"+fmt(k)+") is no longer listed, so it was left out.");k=0;}
+  packSel.value=String(k);
+  var skipped=[];shots=[];
+  (Array.isArray(o.s)?o.s:[]).forEach(function(r){if(!Array.isArray(r))return;var m=BYNAME[r[0]];var j=-1;if(m)m.settings.forEach(function(st,i){if(st.setting===r[1])j=i;});
+    if(j<0){skipped.push(r[0]+(r[1]?" ("+r[1]+")":""));return;}shots.push({model:r[0],setting:j,count:Math.max(1,Math.floor(+r[2]||1))});});
+  if(skipped.length)notes.push("Skipped from the link, no longer listed on wandura.ai: "+skipped.join(", ")+".");
+  renderShots();update();return notes;
+}
+$("#sharePlan").addEventListener("click",function(){shareLink(plannerState(),"My Wandura credit plan");});
+
 function update(){
   var bal=balance();var total=0;var np=[];
   shots.forEach(function(s){var st=BYNAME[s.model].settings[s.setting];if(st.credits==null){if(np.indexOf(s.model)<0)np.push(s.model);}else total+=st.credits*s.count;});
@@ -120,7 +206,7 @@ function update(){
   else hint="Using the balance you typed.";
   if(+packSel.value)hint+=" Pack credits need an active plan, last 90 days and are used first.";
   $("#planHint").textContent=hint;
-  renderCover();
+  renderCover();renderCompare();
 }
 
 /* price table */
@@ -205,6 +291,21 @@ function fillBriefCard(){
   [["Length",brief.min===brief.max?brief.target+" s":brief.min+"–"+brief.max+" s (target "+brief.target+")"],["Format",brief.aspect+" · "+brief.res],["Model",brief.model],["Deadline",brief.deadline||"See the brief"]].forEach(function(x){f.appendChild(el("div",{},[el("dt",{text:x[0]}),el("dd",{text:x[1]})]));});
   var st=$("#bStatus");var note=window.WTK_statusNote?window.WTK_statusNote(C,Date.now()):(C.status_note||"");if(brief.isDefault&&note){st.hidden=false;st.textContent=note+(C.viral_lock?" Viral numbers lock "+C.viral_lock+(C.results?"; results "+C.results:"")+".":"");}else st.hidden=true;
   $("#bSrc").href=C.source;$("#bRead").textContent=niceDate(C.read);
+  tickCountdown();
+}
+/* ---------- deadline countdown (from the data's deadline_iso, UTC) ---------- */
+var cdTimer=null,cdWasClosed=null;
+function localDeadline(iso){try{return new Date(iso).toLocaleString(undefined,{weekday:"short",day:"numeric",month:"short",hour:"numeric",minute:"2-digit",timeZoneName:"short"});}catch(e){return new Date(iso).toString();}}
+function tickCountdown(){
+  var box=$("#bCount");clearTimeout(cdTimer);
+  var cd=brief.isDefault?FX.countdown(C.deadline_iso,Date.now()):null;
+  if(!cd){box.hidden=true;return;}
+  box.hidden=false;box.classList.toggle("closed",cd.closed);
+  $("#cdK").textContent=cd.closed?"Film submissions":"Ends in";$("#cdV").textContent=cd.text;
+  $("#cdLocal").textContent="Your time: "+localDeadline(C.deadline_iso);
+  if(cdWasClosed===false&&cd.closed){cdWasClosed=true;fillBriefCard();return;}
+  cdWasClosed=cd.closed;
+  if(!cd.closed)cdTimer=setTimeout(tickCountdown,cd.ms<3600000?1000:Math.min(30000,cd.ms%60000+50));
 }
 function setFields(gk,keepTitle){var d=G[gk].d;$("#fGenre").value=gk;if(!keepTitle)$("#fTitle").value=d.title;$("#fLead").value=d.lead;$("#fLook").value=d.look;$("#fSetting").value=d.setting;$("#fHook").value=d.hook;}
 
@@ -313,14 +414,42 @@ function loadDefault(){
   if(C.theme!==G[CG].d.title){var ab=(C.brief||"").match(/\babout\s+([^.\n]{6,90})/i);if(ab)$("#fHook").value=ab[1].trim();}
   $("#fRuntime").value=CL.target;$("#fModel").value=CM;fillBriefCard();build();
 }
-$("#readBrief").addEventListener("click",function(){
-  var txt=$("#briefText").value;if(txt.trim()===DEFAULT_BRIEF.trim()){loadDefault();toast("This week's brief");return;}
-  if(!txt.trim()){toast("Paste a brief first");return;}
+function readBriefText(txt,quiet){
+  if(txt.trim()===DEFAULT_BRIEF.trim()){loadDefault();if(!quiet)toast("This week's brief");return;}
+  if(!txt.trim()){if(!quiet)toast("Paste a brief first");return;}
   var b=parseBrief(txt);var gk=b.genre||$("#fGenre").value;
   brief={week:b.week,genre:gk,title:b.title||"",min:b.min||25,max:b.max||35,target:b.target||30,aspect:b.aspect||"9:16",res:b.res||"720p",model:b.model||"Seedance 2.0 Fast",deadline:b.deadline,rules:b.rules,isDefault:false,tag:b.tag};
   setFields(gk);if(b.title)$("#fTitle").value=b.title;if(b.hook)$("#fHook").value=b.hook;$("#fRuntime").value=brief.target;$("#fModel").value=brief.model;
-  fillBriefCard();build();toast("Brief read");
-});
+  fillBriefCard();build();if(!quiet)toast("Brief read");
+}
+$("#readBrief").addEventListener("click",function(){readBriefText($("#briefText").value);});
+
+/* ---------- share: kit ---------- */
+var KF={ti:"#fTitle",l:"#fLead",lo:"#fLook",se:"#fSetting",h:"#fHook",m:"#fModel"};
+var KD={ti:"title",l:"lead",lo:"look",se:"setting",h:"hook"};
+function kitState(){
+  var gk=$("#fGenre").value;var d=G[gk].d;var o={v:1,t:"k",g:gk};
+  Object.keys(KF).forEach(function(k){var v=$(KF[k]).value;if(KD[k]&&v===d[KD[k]])return;o[k]=v;});
+  o.r=+$("#fRuntime").value||brief.target||30;
+  var bt=$("#briefText").value;if(bt.trim()&&bt.trim()!==DEFAULT_BRIEF.trim())o.br=bt;
+  return o;
+}
+function restoreKit(o){
+  var notes=[];showTab("tab-kit");
+  if(typeof o.br==="string"&&o.br.trim()){$("#briefText").value=o.br;readBriefText(o.br,true);}else loadDefault();
+  var gk=o.g;if(!G[gk]){if(gk)notes.push("The shared genre template is no longer available, so "+G[$("#fGenre").value].label+" was used.");gk=$("#fGenre").value;}
+  setFields(gk);brief.genre=gk;
+  Object.keys(KF).forEach(function(k){if(typeof o[k]==="string")$(KF[k]).value=o[k];else if(k==="ti")$(KF[k]).value=G[gk].d.title;});
+  if(o.r)$("#fRuntime").value=Math.max(10,Math.min(60,Math.round(+o.r)||30));
+  fillBriefCard();build();return notes;
+}
+$$(".shareKit").forEach(function(b){b.addEventListener("click",function(){if(!kit)build();shareLink(kitState(),"My Wandura challenge shot list");});});
+function restoreFromHash(){
+  var o=FX.readHash(location.hash);if(!o)return false;
+  var notes=o.t==="p"?restorePlanner(o):restoreKit(o);
+  shareNote(notes);toast(o.t==="p"?"Shared plan opened":"Shared kit opened");return true;
+}
+window.addEventListener("hashchange",function(){if(/^#(p|k)=/.test(location.hash))restoreFromHash();});
 $("#fGenre").addEventListener("change",function(){setFields(this.value,true);brief.genre=this.value;fillBriefCard();build();});
 $("#buildKit").addEventListener("click",function(){build();toast("Kit rebuilt");var o=$("#kitOut");if(o.scrollIntoView)o.scrollIntoView({behavior:"smooth",block:"start"});});
 ["#copyAll","#copyAll2"].forEach(function(id){$(id).addEventListener("click",function(){if(!kit)build();copyText(allText());});});
@@ -328,6 +457,7 @@ $("#buildKit").addEventListener("click",function(){build();toast("Kit rebuilt");
 /* init */
 renderPrices();
 shots=PRESETS.film.filter(function(p){return BYNAME[p.model];}).map(function(p){return {model:p.model,setting:findSetting(p.model,p.setting),count:p.count};});
-renderShots();update();loadDefault();
-window.WTK={parseBrief:parseBrief,allText:function(){return allText();}};
+renderShots();renderCmpPick();update();loadDefault();
+restoreFromHash();
+window.WTK={parseBrief:parseBrief,allText:function(){return allText();},plannerState:plannerState,kitState:kitState};
 })();
