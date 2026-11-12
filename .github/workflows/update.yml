@@ -1,0 +1,53 @@
+name: Daily data refresh
+
+# Re-reads wandura.ai every morning (prices + the weekly challenge) and commits
+# only when the data changed. Vercel redeploys on its own after the push.
+on:
+  schedule:
+    - cron: "0 6 * * *"   # 06:00 UTC daily
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Read wandura.ai
+        run: node scripts/update.mjs
+
+      - name: Check the site still works with the new data
+        id: tests
+        run: |
+          if node --test; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::Tests failed on the new data, so the old data is kept. A human should look."
+            git checkout -- site/data
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit if anything changed
+        if: steps.tests.outputs.ok == 'true'
+        run: |
+          if git diff --quiet -- site/data; then
+            echo "No data changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/data
+          git commit -m "Daily data refresh $(date -u +%Y-%m-%d)"
+          git push
