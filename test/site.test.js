@@ -10,6 +10,13 @@ test('page basics',()=>{
   for(const m of html.matchAll(/(?:src|href)="([^"#:]+)"/g)){assert.ok(fs.existsSync(path.join(S,m[1])),'missing asset '+m[1]);}
   assert.doesNotMatch(html,/TODO|lorem|\{\{|undefined/i);
 });
+test('centred header copy',()=>{
+  assert.match(html,/<h1><span class="h1-a">Plan your film<\/span> <span class="grad h1-b">before you spend credits\.<\/span><\/h1>/);
+  assert.match(html,/<p class="lede">Two free tools: see how far your credits go, and turn the weekly brief into a 30s shot list\.<\/p>/);
+  assert.doesNotMatch(html,/<h2>Weekly Challenge Kit<\/h2>/);
+  const css=fs.readFileSync(path.join(S,'styles.css'),'utf8');
+  assert.match(css,/\.hero\{[^}]*text-align:center/);assert.match(css,/\.tabs\{[^}]*justify-content:center/);assert.match(css,/\.lede\{[^}]*max-width:34em/);
+});
 test('no emoji in shipped text',()=>{
   for(const f of ['index.html','script.js','styles.css','features.js']){const t=fs.readFileSync(path.join(S,f),'utf8');assert.doesNotMatch(t,/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u,f);}
 });
