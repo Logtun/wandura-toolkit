@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wandura Toolkit: Credit Planner and Weekly Challenge Kit</title>
+<meta name="description" content="Free tools for Wandura AI creators: see how far your credits go, and turn the weekly challenge brief into a 30-second 9:16 shot list with prompts.">
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:title" content="Wandura Toolkit">
+<meta property="og:description" content="How far do my credits go? Plus a shot list and prompt kit for the Wandura Weekly Challenge. By @iamlogtun.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the tools</a>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="wordmark" href="#" aria-label="Wandura Toolkit home"><span class="wm-a">Wandura</span> <span class="wm-b">Toolkit</span></a>
+    <button id="themeBtn" class="theme-btn" type="button" aria-label="Switch to light mode" aria-pressed="false">
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      <span class="theme-label">Light</span>
+    </button>
+  </div>
+  <div class="wrap hero">
+    <p class="eyebrow">For Wandura AI creators</p>
+    <h1>Plan the film before you <span class="grad">spend the credits.</span></h1>
+    <p class="lede">Two free tools: see exactly how far your credits go, and turn this week's challenge brief into a 30-second shot list with copy-ready prompts.</p>
+  </div>
+  <nav class="wrap tabs" role="tablist" aria-label="Tools">
+    <button role="tab" id="tab-planner" aria-controls="panel-planner" aria-selected="true" class="tab" type="button">Credit Planner</button>
+    <button role="tab" id="tab-kit" aria-controls="panel-kit" aria-selected="false" class="tab" type="button" tabindex="-1">Challenge Kit</button>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+<!-- TOOL 1 -->
+<section id="panel-planner" role="tabpanel" aria-labelledby="tab-planner" class="panel">
+  <div class="panel-head">
+    <h2>How far do my credits go?</h2>
+    <p class="muted">Pick a plan or type your balance, then add the shots you want to make.</p>
+  </div>
+
+  <div class="cols"><div class="col-l">
+  <div class="card">
+    <h3 class="card-title">1. Your credits</h3>
+    <div class="seg" id="planSeg" role="radiogroup" aria-label="Plan"></div>
+    <div class="row2">
+      <label class="field">
+        <span>Credit balance</span>
+        <input id="balance" type="number" inputmode="numeric" min="0" step="1" value="1500">
+      </label>
+      <label class="field">
+        <span>Add a credit pack</span>
+        <select id="pack"></select>
+      </label>
+    </div>
+    <p class="hint" id="planHint"></p>
+  </div>
+
+  <div class="card">
+    <div class="card-title-row">
+      <h3 class="card-title">2. Your shots</h3>
+      <div class="presets">
+        <button class="chip" type="button" data-preset="film">Plan a 30s film</button>
+        <button class="chip" type="button" data-preset="budget">30s on a budget</button>
+        <button class="chip ghost" type="button" data-preset="clear">Clear</button>
+      </div>
+    </div>
+    <div id="shots" class="shots"></div>
+    <button id="addShot" class="btn btn-ghost" type="button">+ Add a shot</button>
+  </div>
+  </div><div class="col-r">
+  <div class="card result" aria-live="polite">
+    <div class="stats">
+      <div class="stat"><span class="stat-k">Total</span><span class="stat-v" id="sTotal">0</span><span class="stat-s" id="sTotalUsd">credits</span></div>
+      <div class="stat"><span class="stat-k">Credits left</span><span class="stat-v" id="sLeft">0</span><span class="stat-s" id="sLeftNote">of your balance</span></div>
+    </div>
+    <div class="meter" aria-hidden="true"><span id="meterBar"></span></div>
+    <p class="warn" id="unpubNote" hidden></p>
+  </div>
+
+  <div class="card">
+    <div class="card-title-row">
+      <h3 class="card-title">3. What your balance covers</h3>
+      <div class="seg small" id="kindSeg" role="radiogroup" aria-label="Type">
+        <button type="button" role="radio" aria-checked="true" data-kind="video">Video</button>
+        <button type="button" role="radio" aria-checked="false" data-kind="image">Image</button>
+        <button type="button" role="radio" aria-checked="false" data-kind="audio">Audio</button>
+      </div>
+    </div>
+    <p class="hint" id="coverHint"></p>
+    <div id="cover" class="cover"></div>
+  </div>
+  </div></div>
+
+  <details class="card prices">
+    <summary><span>Every price used, with its source</span></summary>
+    <div id="priceTable"></div>
+  </details>
+  <p class="stamp" id="stamp1"></p>
+</section>
+
+<!-- TOOL 2 -->
+<section id="panel-kit" role="tabpanel" aria-labelledby="tab-kit" class="panel" hidden>
+  <div class="panel-head">
+    <h2>Weekly Challenge Kit</h2>
+    <p class="muted">This week's brief is loaded. Paste any week's brief to rebuild the kit.</p>
+  </div>
+
+  <div class="card brief">
+    <div class="brief-top">
+      <span class="pill" id="bWeek"></span><span class="pill pill-alt" id="bGenre"></span>
+    </div>
+    <p class="brief-title" id="bTitle"></p>
+    <p class="brief-tag" id="bTag"></p>
+    <dl class="facts" id="bFacts"></dl>
+    <p class="warn" id="bStatus"></p>
+    <p class="hint">From <a id="bSrc" href="#" rel="noopener" target="_blank">wandura.ai/contests/film-weekly-challenges</a>, read <span id="bRead"></span>.</p>
+  </div>
+
+  <div class="card">
+    <h3 class="card-title">The brief</h3>
+    <label class="field">
+      <span>Paste any week's brief here</span>
+      <textarea id="briefText" rows="6"></textarea>
+    </label>
+    <button id="readBrief" class="btn" type="button">Read this brief</button>
+    <div class="row2 mt">
+      <label class="field"><span>Title</span><input id="fTitle" type="text"></label>
+      <label class="field"><span>Genre template</span><select id="fGenre"></select></label>
+      <label class="field"><span>Lead character (name)</span><input id="fLead" type="text"></label>
+      <label class="field"><span>Setting</span><input id="fSetting" type="text"></label>
+      <label class="field full"><span>Their look (kept the same in every shot)</span><input id="fLook" type="text"></label>
+      <label class="field full"><span>The hook (what happens)</span><input id="fHook" type="text"></label>
+      <label class="field"><span>Runtime target (s)</span><input id="fRuntime" type="number" min="10" max="60" inputmode="numeric"></label>
+      <label class="field"><span>Model</span><input id="fModel" type="text"></label>
+    </div>
+    <button id="buildKit" class="btn btn-primary" type="button">Build my kit</button>
+  </div>
+
+  <div class="copy-row">
+    <button id="copyAll" class="btn btn-primary wide" type="button">Copy all</button>
+  </div>
+  <div id="kitOut" class="kit-out" aria-live="polite"></div>
+  <div class="copy-row">
+    <button id="copyAll2" class="btn btn-primary wide" type="button">Copy all</button>
+  </div>
+  <p class="stamp" id="stamp2"></p>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>by <a href="https://x.com/iamlogtun" rel="noopener" target="_blank">@iamlogtun</a></p>
+    <p class="muted small">Prices and rules are read from wandura.ai and can change. The Generate button on Wandura always shows the final price.</p>
+  </div>
+</footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="data/prices.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
