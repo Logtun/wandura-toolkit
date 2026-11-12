@@ -6,12 +6,12 @@ test('page basics',()=>{
   assert.match(html,/name="viewport" content="width=device-width, initial-scale=1/);
   assert.match(html,/Credit Planner/);assert.match(html,/Challenge Kit/);
   assert.match(html,/href="https:\/\/x.com\/iamlogtun"[^>]*>@iamlogtun<\/a><\/p>/);
-  assert.match(html,/id="copyAll"/);assert.match(html,/id="themeBtn"/);
+  assert.match(html,/id="copyAll"/);assert.match(html,/id="sharePlan"/);assert.match(html,/class="btn wide shareKit"/);assert.match(html,/id="bCount"/);assert.match(html,/id="compareCard"/);assert.doesNotMatch(html,/Fan-made/i);assert.match(html,/id="themeBtn"/);
   for(const m of html.matchAll(/(?:src|href)="([^"#:]+)"/g)){assert.ok(fs.existsSync(path.join(S,m[1])),'missing asset '+m[1]);}
   assert.doesNotMatch(html,/TODO|lorem|\{\{|undefined/i);
 });
 test('no emoji in shipped text',()=>{
-  for(const f of ['index.html','script.js','styles.css']){const t=fs.readFileSync(path.join(S,f),'utf8');assert.doesNotMatch(t,/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u,f);}
+  for(const f of ['index.html','script.js','styles.css','features.js']){const t=fs.readFileSync(path.join(S,f),'utf8');assert.doesNotMatch(t,/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u,f);}
 });
 test('prices are scraped, sourced and dated',()=>{
   const d=JSON.parse(fs.readFileSync(path.join(S,'data','prices.json'),'utf8'));
