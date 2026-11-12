@@ -33,6 +33,7 @@
 </header>
 
 <main id="main" class="wrap">
+<p class="warn share-note" id="shareNote" role="status" hidden></p>
 <!-- TOOL 1 -->
 <section id="panel-planner" role="tabpanel" aria-labelledby="tab-planner" class="panel">
   <div class="panel-head">
@@ -77,6 +78,7 @@
     </div>
     <div class="meter" aria-hidden="true"><span id="meterBar"></span></div>
     <p class="warn" id="unpubNote" hidden></p>
+    <button id="sharePlan" class="btn wide share-btn" type="button">Share this plan</button>
   </div>
 
   <div class="card">
@@ -92,6 +94,20 @@
     <div id="cover" class="cover"></div>
   </div>
   </div></div>
+
+  <div class="card compare" id="compareCard">
+    <div class="card-title-row">
+      <h3 class="card-title">4. Compare models</h3>
+      <div class="seg small" id="cmpKind" role="radiogroup" aria-label="Compare type">
+        <button type="button" role="radio" aria-checked="true" data-kind="video">Video</button>
+        <button type="button" role="radio" aria-checked="false" data-kind="image">Image</button>
+      </div>
+    </div>
+    <p class="hint" id="cmpHint"></p>
+    <div id="cmpPick" class="cmp-pick"></div>
+    <div id="cmpOut" class="cmp-out" aria-live="polite"></div>
+    <p class="hint">Prices only, from wandura.ai's own pages. Wandura publishes no quality scores, so none are shown here.</p>
+  </div>
 
   <details class="card prices">
     <summary><span>Every price used, with its source</span></summary>
@@ -114,6 +130,11 @@
     <p class="brief-title" id="bTitle"></p>
     <p class="brief-tag" id="bTag"></p>
     <dl class="facts" id="bFacts"></dl>
+    <div class="countdown" id="bCount" hidden>
+      <span class="cd-k" id="cdK">Ends in</span>
+      <span class="cd-v" id="cdV"></span>
+      <span class="cd-s" id="cdLocal"></span>
+    </div>
     <p class="warn" id="bStatus"></p>
     <p class="hint">From <a id="bSrc" href="#" rel="noopener" target="_blank">wandura.ai/contests/film-weekly-challenges</a>, read <span id="bRead"></span>.</p>
   </div>
@@ -138,12 +159,14 @@
     <button id="buildKit" class="btn btn-primary" type="button">Build my kit</button>
   </div>
 
-  <div class="copy-row">
+  <div class="copy-row two">
     <button id="copyAll" class="btn btn-primary wide" type="button">Copy all</button>
+    <button class="btn wide shareKit" type="button">Share</button>
   </div>
   <div id="kitOut" class="kit-out" aria-live="polite"></div>
-  <div class="copy-row">
+  <div class="copy-row two">
     <button id="copyAll2" class="btn btn-primary wide" type="button">Copy all</button>
+    <button class="btn wide shareKit" type="button">Share</button>
   </div>
   <p class="stamp" id="stamp2"></p>
 </section>
@@ -158,6 +181,7 @@
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script src="data/prices.js"></script>
 <script src="challenge-note.js"></script>
+<script src="features.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
