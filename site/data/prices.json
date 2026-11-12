@@ -11,7 +11,7 @@
    "type": "plan",
    "source": "https://www.wandura.ai/pricing",
    "read": "2026-11-12",
-   "quote": "Plans are Basic at $15/month with 1,500 credits and Growth at $49/month with 6,000 credits, billed monthly; credit packs top up a plan."
+   "quote": "Basic $15 /month For first-time creators Get Basic for $15/mo Features 1,500 credits every month"
   },
   {
    "name": "Growth",
@@ -20,7 +20,7 @@
    "type": "plan",
    "source": "https://www.wandura.ai/pricing",
    "read": "2026-11-12",
-   "quote": "Plans are Basic at $15/month with 1,500 credits and Growth at $49/month with 6,000 credits, billed monthly; credit packs top up a plan."
+   "quote": "Growth $49 /month 22% more credits per dollar Get Growth for $49/mo Features 6,000 credits every month"
   }
  ],
  "packs": [
@@ -986,6 +986,11 @@
   "theme": "The Knock",
   "tagline": "Three knocks. No one should be there.",
   "brief": "Create a horror film about a knock at the door in the dead of night. Make us feel the silence, the knock and the choice.",
+  "pillars": [
+   "Original characters",
+   "Atmosphere over gore",
+   "A choice that haunts"
+  ],
   "beats": [
    [
     "The silence.",
@@ -1000,15 +1005,20 @@
     "Open it, or don’t. Let the ending haunt us."
    ]
   ],
-  "pillars": [
-   "Original characters",
-   "Atmosphere over gore",
-   "A choice that haunts"
-  ],
   "deadline": "10 Nov 2026 · 23:59 UTC (film submissions close)",
+  "deadline_iso": "2026-11-10T23:59:59.000Z",
+  "status": "Open now",
   "ideas_close": "7 Nov 2026, 23:59 UTC",
   "viral_lock": "16 Nov 2026, 23:59:59 UTC",
   "results": "17 Nov 2026 (UTC)",
+  "length": {
+   "min": 25,
+   "max": 35,
+   "target": 30
+  },
+  "aspect": "9:16",
+  "resolution": "720p",
+  "model": "Seedance 2.0 Fast",
   "rules": [
    "25–35 seconds; target 30 s including opening and end card",
    "9:16 vertical, native 720p",
