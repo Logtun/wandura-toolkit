@@ -1,5 +1,5 @@
 {
- "read": "2026-11-12",
+ "read": "2026-11-13",
  "site": "https://www.wandura.ai",
  "credit_usd": 0.01,
  "credit_usd_quote": "Contact sales Compare plans 1 credit = $0.01, charged by each model's actual usage.",
@@ -10,7 +10,7 @@
    "credits": 1500,
    "type": "plan",
    "source": "https://www.wandura.ai/pricing",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Basic $15 /month For first-time creators Get Basic for $15/mo Features 1,500 credits every month"
   },
   {
@@ -19,7 +19,7 @@
    "credits": 6000,
    "type": "plan",
    "source": "https://www.wandura.ai/pricing",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Growth $49 /month 22% more credits per dollar Get Growth for $49/mo Features 6,000 credits every month"
   }
  ],
@@ -30,7 +30,7 @@
    "credits": 1000,
    "type": "pack",
    "source": "https://www.wandura.ai/pricing",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "note": "One-time top-up; needs an active plan; pack credits last 90 days."
   },
   {
@@ -39,7 +39,7 @@
    "credits": 6250,
    "type": "pack",
    "source": "https://www.wandura.ai/pricing",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "note": "One-time top-up; needs an active plan; pack credits last 90 days."
   },
   {
@@ -48,7 +48,7 @@
    "credits": 14000,
    "type": "pack",
    "source": "https://www.wandura.ai/pricing",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "note": "One-time top-up; needs an active plan; pack credits last 90 days."
   }
  ],
@@ -57,7 +57,7 @@
   "credits": 160,
   "type": "free",
   "source": "https://www.wandura.ai/pricing",
-  "read": "2026-11-12",
+  "read": "2026-11-13",
   "quote": "Start free with 160 credits."
  },
  "plan_coverage_stated": {
@@ -82,7 +82,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/seedance-2-0",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "The default is 8 seconds at 720p in 16:9 for 208 credits (about $2.08), and the Generate button shows the price for other settings."
   },
   {
@@ -94,7 +94,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/ad-studio",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "For example, a 5-second Kling 3.0 clip costs 65 credits, a 5-second Seedance 2.0 clip at 720p costs 130 credits and an 8-second Veo 3.1 clip at 720p costs 436 credits."
   },
   {
@@ -106,7 +106,7 @@
    "resolution": "480p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/seedance-2-5",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second Seedance 2.5 clip costs 95 credits at 480p and 211 credits at 720p, and the price grows with length: a 10-second clip at 720p costs 422 credits."
   },
   {
@@ -118,7 +118,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/seedance-2-5",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second Seedance 2.5 clip costs 95 credits at 480p and 211 credits at 720p, and the price grows with length: a 10-second clip at 720p costs 422 credits."
   },
   {
@@ -130,7 +130,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/seedance-2-5",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second Seedance 2.5 clip costs 95 credits at 480p and 211 credits at 720p, and the price grows with length: a 10-second clip at 720p costs 422 credits."
   },
   {
@@ -142,7 +142,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/veo-3-1",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "The default setting is 8 seconds at 720p in 16:9 for 436 credits (about $4.36); the Generate button updates the price when you change length or resolution."
   },
   {
@@ -154,7 +154,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/start-end-frame-video",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Veo 3.1 First-Last: at 720p or 1080p a 4-second clip costs 218 credits (about $2.18), a 6-second clip 327 credits (about $3.27) and an 8-second clip 436 credits (about $4.36); at 4K an 8-second clip costs 600 credits (about $6.00)."
   },
   {
@@ -166,7 +166,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/start-end-frame-video",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Veo 3.1 First-Last: at 720p or 1080p a 4-second clip costs 218 credits (about $2.18), a 6-second clip 327 credits (about $3.27) and an 8-second clip 436 credits (about $4.36); at 4K an 8-second clip costs 600 credits (about $6.00)."
   },
   {
@@ -178,7 +178,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/start-end-frame-video",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Veo 3.1 First-Last: at 720p or 1080p a 4-second clip costs 218 credits (about $2.18), a 6-second clip 327 credits (about $3.27) and an 8-second clip 436 credits (about $4.36); at 4K an 8-second clip costs 600 credits (about $6.00)."
   },
   {
@@ -190,7 +190,7 @@
    "resolution": "4K",
    "kind": "video",
    "source": "https://www.wandura.ai/start-end-frame-video",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Veo 3.1 First-Last: at 720p or 1080p a 4-second clip costs 218 credits (about $2.18), a 6-second clip 327 credits (about $3.27) and an 8-second clip 436 credits (about $4.36); at 4K an 8-second clip costs 600 credits (about $6.00)."
   },
   {
@@ -202,7 +202,7 @@
    "resolution": null,
    "kind": "video",
    "source": "https://www.wandura.ai/m/kling-3-0",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "The default clip is 5 seconds in 16:9 for 65 credits (about $0.65), and the Generate button shows the new price if you change length or ratio."
   },
   {
@@ -214,7 +214,7 @@
    "resolution": null,
    "kind": "video",
    "source": "https://www.wandura.ai/start-end-frame-video",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Kling 2.5 Turbo: a 5-second clip costs 45 credits (about $0.45) and a 10-second clip 90 credits (about $0.90)."
   },
   {
@@ -226,7 +226,7 @@
    "resolution": null,
    "kind": "video",
    "source": "https://www.wandura.ai/start-end-frame-video",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Kling 2.5 Turbo: a 5-second clip costs 45 credits (about $0.45) and a 10-second clip 90 credits (about $0.90)."
   },
   {
@@ -238,7 +238,7 @@
    "resolution": null,
    "kind": "video",
    "source": "https://www.wandura.ai/m/kling-o1",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second Kling O1 clip from text or an image costs 73 credits (about $0.73) and a 10-second clip costs 146 credits."
   },
   {
@@ -250,7 +250,7 @@
    "resolution": null,
    "kind": "video",
    "source": "https://www.wandura.ai/m/kling-o1",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second Kling O1 clip from text or an image costs 73 credits (about $0.73) and a 10-second clip costs 146 credits."
   },
   {
@@ -262,7 +262,7 @@
    "resolution": null,
    "kind": "video",
    "source": "https://www.wandura.ai/m/kling-o1",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "With a reference video, a 5-second clip costs 218 credits and a 10-second clip costs 436 credits."
   },
   {
@@ -274,7 +274,7 @@
    "resolution": null,
    "kind": "video",
    "source": "https://www.wandura.ai/m/kling-o1",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "With a reference video, a 5-second clip costs 218 credits and a 10-second clip costs 436 credits."
   },
   {
@@ -286,7 +286,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/wan-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A default 5-second 720p clip on Wandura 1.5 costs 65 credits (about $0.65), and the price shows on Generate before you start."
   },
   {
@@ -298,7 +298,7 @@
    "resolution": null,
    "kind": "video",
    "source": "https://www.wandura.ai/m/hailuo-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 6-second Hailuo 02 Standard clip costs 45 credits (about $0.45) and a 10-second clip costs 75 credits."
   },
   {
@@ -310,7 +310,7 @@
    "resolution": null,
    "kind": "video",
    "source": "https://www.wandura.ai/m/hailuo-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 6-second Hailuo 02 Standard clip costs 45 credits (about $0.45) and a 10-second clip costs 75 credits."
   },
   {
@@ -322,7 +322,7 @@
    "resolution": null,
    "kind": "video",
    "source": "https://www.wandura.ai/m/ltx-2",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 6-second LTX 2.3 Fast clip costs 41 credits (about $0.41) and a 10-second clip costs 68 credits."
   },
   {
@@ -334,7 +334,7 @@
    "resolution": null,
    "kind": "video",
    "source": "https://www.wandura.ai/m/ltx-2",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 6-second LTX 2.3 Fast clip costs 41 credits (about $0.41) and a 10-second clip costs 68 credits."
   },
   {
@@ -346,7 +346,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/ltx-2",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 6-second LTX 2.5 Pro clip costs 117 credits at 720p and 165 credits at 1080p."
   },
   {
@@ -358,7 +358,7 @@
    "resolution": "1080p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/ltx-2",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 6-second LTX 2.5 Pro clip costs 117 credits at 720p and 165 credits at 1080p."
   },
   {
@@ -370,7 +370,7 @@
    "resolution": "540p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/luma-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second Luma Ray 3.2 clip from text costs 100 credits at 540p, 200 credits at 720p and 400 credits at 1080p, and a 10-second text clip at 540p costs 200 credits."
   },
   {
@@ -382,7 +382,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/luma-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second Luma Ray 3.2 clip from text costs 100 credits at 540p, 200 credits at 720p and 400 credits at 1080p, and a 10-second text clip at 540p costs 200 credits."
   },
   {
@@ -394,7 +394,7 @@
    "resolution": "1080p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/luma-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second Luma Ray 3.2 clip from text costs 100 credits at 540p, 200 credits at 720p and 400 credits at 1080p, and a 10-second text clip at 540p costs 200 credits."
   },
   {
@@ -406,7 +406,7 @@
    "resolution": "540p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/luma-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second Luma Ray 3.2 clip from text costs 100 credits at 540p, 200 credits at 720p and 400 credits at 1080p, and a 10-second text clip at 540p costs 200 credits."
   },
   {
@@ -418,7 +418,7 @@
    "resolution": "540p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/luma-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second clip from an image costs 30 credits at 540p, 60 credits at 720p and 240 credits at 1080p."
   },
   {
@@ -430,7 +430,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/luma-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second clip from an image costs 30 credits at 540p, 60 credits at 720p and 240 credits at 1080p."
   },
   {
@@ -442,7 +442,7 @@
    "resolution": "1080p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/luma-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second clip from an image costs 30 credits at 540p, 60 credits at 720p and 240 credits at 1080p."
   },
   {
@@ -454,7 +454,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/pika-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second Pika 2.2 clip costs 34 credits at 720p (about $0.34) and 76 credits at 1080p (about $0.76)."
   },
   {
@@ -466,7 +466,7 @@
    "resolution": "1080p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/pika-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second Pika 2.2 clip costs 34 credits at 720p (about $0.34) and 76 credits at 1080p (about $0.76)."
   },
   {
@@ -478,7 +478,7 @@
    "resolution": "360p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/pixverse-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second PixVerse V6 clip costs 18 credits at 360p, 24 credits at 540p, 31 credits at 720p and 63 credits at 1080p, and an 8-second clip at 540p costs 38 credits."
   },
   {
@@ -490,7 +490,7 @@
    "resolution": "540p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/pixverse-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second PixVerse V6 clip costs 18 credits at 360p, 24 credits at 540p, 31 credits at 720p and 63 credits at 1080p, and an 8-second clip at 540p costs 38 credits."
   },
   {
@@ -502,7 +502,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/pixverse-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second PixVerse V6 clip costs 18 credits at 360p, 24 credits at 540p, 31 credits at 720p and 63 credits at 1080p, and an 8-second clip at 540p costs 38 credits."
   },
   {
@@ -514,7 +514,7 @@
    "resolution": "1080p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/pixverse-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second PixVerse V6 clip costs 18 credits at 360p, 24 credits at 540p, 31 credits at 720p and 63 credits at 1080p, and an 8-second clip at 540p costs 38 credits."
   },
   {
@@ -526,7 +526,7 @@
    "resolution": "540p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/pixverse-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 5-second PixVerse V6 clip costs 18 credits at 360p, 24 credits at 540p, 31 credits at 720p and 63 credits at 1080p, and an 8-second clip at 540p costs 38 credits."
   },
   {
@@ -538,7 +538,7 @@
    "resolution": "540p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/vidu-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "A 4-second Vidu Q3 clip at 540p costs 37 credits."
   },
   {
@@ -550,7 +550,7 @@
    "resolution": "540p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/vidu-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "An 8-second clip costs 74 credits at 540p, 162 credits at 720p and 162 credits at 1080p."
   },
   {
@@ -562,7 +562,7 @@
    "resolution": "720p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/vidu-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "An 8-second clip costs 74 credits at 540p, 162 credits at 720p and 162 credits at 1080p."
   },
   {
@@ -574,7 +574,7 @@
    "resolution": "1080p",
    "kind": "video",
    "source": "https://www.wandura.ai/m/vidu-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "An 8-second clip costs 74 credits at 540p, 162 credits at 720p and 162 credits at 1080p."
   },
   {
@@ -586,7 +586,7 @@
    "resolution": null,
    "kind": "video",
    "source": "https://www.wandura.ai/mimic-motion",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "How many credits does Mimic Motion use? Kling 3.0 Motion Control is priced per second of the motion video you add: 19.6 credits (about $0.20) per second, so a 5-second template costs 98 credits (about $0.98), 10 seconds costs 196 credits and 30 seconds costs 588 credits."
   },
   {
@@ -598,7 +598,7 @@
    "resolution": null,
    "kind": "video",
    "source": "https://www.wandura.ai/mimic-motion",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "How many credits does Mimic Motion use? Kling 3.0 Motion Control is priced per second of the motion video you add: 19.6 credits (about $0.20) per second, so a 5-second template costs 98 credits (about $0.98), 10 seconds costs 196 credits and 30 seconds costs 588 credits."
   }
  ],
@@ -612,7 +612,7 @@
    "resolution": "1K",
    "kind": "image",
    "source": "https://www.wandura.ai/im/nano-banana-2",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "One Nano Banana 2 image costs 11 credits at 1K (about $0.11), 15 credits at 2K and 22 credits at 4K."
   },
   {
@@ -624,7 +624,7 @@
    "resolution": "2K",
    "kind": "image",
    "source": "https://www.wandura.ai/im/nano-banana-2",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "One Nano Banana 2 image costs 11 credits at 1K (about $0.11), 15 credits at 2K and 22 credits at 4K."
   },
   {
@@ -636,7 +636,7 @@
    "resolution": "4K",
    "kind": "image",
    "source": "https://www.wandura.ai/im/nano-banana-2",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "One Nano Banana 2 image costs 11 credits at 1K (about $0.11), 15 credits at 2K and 22 credits at 4K."
   },
   {
@@ -648,7 +648,7 @@
    "resolution": "1K",
    "kind": "image",
    "source": "https://www.wandura.ai/im/nano-banana-pro",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "One Nano Banana Pro image costs 18 credits at 1K (about $0.18)."
   },
   {
@@ -660,7 +660,7 @@
    "resolution": null,
    "kind": "image",
    "source": "https://www.wandura.ai/im/seedream",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "How much does Seedream cost on Wandura? With the default settings (Seedream 5.0 Lite, Auto size, 1:1, one image) an image costs 6 credits, about $0.06."
   },
   {
@@ -672,7 +672,7 @@
    "resolution": null,
    "kind": "image",
    "source": "https://www.wandura.ai/ai-photo-editor",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Edits run on Seedream 4.5 (Edit) at 8 credits (about $0.08) per image; upload a photo, type the change and press Generate."
   },
   {
@@ -684,7 +684,7 @@
    "resolution": null,
    "kind": "image",
    "source": "https://www.wandura.ai/im/flux-ai",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "FLUX.3 is the default model at 10 credits (about $0.10) per image at the default Auto setting, and the price shows on Generate before you start."
   },
   {
@@ -696,7 +696,7 @@
    "resolution": null,
    "kind": "image",
    "source": "https://www.wandura.ai/text-to-image",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "How much does a generation cost? Each model shows its real price next to its name — for example 5 credits (about $0.05) per image with Ideogram V4 at Turbo speed, 6 (about $0.06) with FLUX 1.1 Pro, 6 (about $0.06) with Seedream 5.0 Lite, 18 (about $0.18) with Nano Banana Pro, and 3 to 90 (about $0.03–$0.90) with GPT Image 2 depending on quality."
   },
   {
@@ -708,7 +708,7 @@
    "resolution": null,
    "kind": "image",
    "source": "https://www.wandura.ai/im/flux-kontext",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "One FLUX Kontext edit costs 11 credits per image (about $0.11), and one FLUX Kontext Max edit costs 30 credits per image."
   },
   {
@@ -720,7 +720,7 @@
    "resolution": null,
    "kind": "image",
    "source": "https://www.wandura.ai/im/flux-kontext",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "One FLUX Kontext edit costs 11 credits per image (about $0.11), and one FLUX Kontext Max edit costs 30 credits per image."
   },
   {
@@ -732,7 +732,7 @@
    "resolution": null,
    "kind": "image",
    "source": "https://www.wandura.ai/im/recraft",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Recraft V3 costs 35 credits (about $0.35) per image; V4.1 models run from 1 credit (V4.1 Flash) to 42 credits (V4.1 Pro), shown on Generate first."
   },
   {
@@ -744,7 +744,7 @@
    "resolution": null,
    "kind": "image",
    "source": "https://www.wandura.ai/im/recraft",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Recraft V3 costs 35 credits (about $0.35) per image; V4.1 models run from 1 credit (V4.1 Flash) to 42 credits (V4.1 Pro), shown on Generate first."
   },
   {
@@ -756,7 +756,7 @@
    "resolution": null,
    "kind": "image",
    "source": "https://www.wandura.ai/im/recraft",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Recraft V3 costs 35 credits (about $0.35) per image; V4.1 models run from 1 credit (V4.1 Flash) to 42 credits (V4.1 Pro), shown on Generate first."
   },
   {
@@ -768,7 +768,7 @@
    "resolution": null,
    "kind": "image",
    "source": "https://www.wandura.ai/text-to-image",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "How much does a generation cost? Each model shows its real price next to its name — for example 5 credits (about $0.05) per image with Ideogram V4 at Turbo speed, 6 (about $0.06) with FLUX 1.1 Pro, 6 (about $0.06) with Seedream 5.0 Lite, 18 (about $0.18) with Nano Banana Pro, and 3 to 90 (about $0.03–$0.90) with GPT Image 2 depending on quality."
   },
   {
@@ -780,7 +780,7 @@
    "resolution": null,
    "kind": "image",
    "source": "https://www.wandura.ai/image-to-image",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "How much does a generation cost? Each model shows its real price next to its name — from 5 credits (about $0.05) per image with Qwen Image Edit (larger photos cost 5.7 credits, about $0.06, per megapixel), 8 credits (about $0.08) with Seedream 4.5, 11 credits (about $0.11) with FLUX Kontext, 15 credits (about $0.15) with Nano Banana Edit, up to 30–90 credits (about $0.30–$0.90) with GPT Image 2 depending on quality."
   },
   {
@@ -792,7 +792,7 @@
    "resolution": null,
    "kind": "image",
    "source": "https://www.wandura.ai/image-to-image",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "How much does a generation cost? Each model shows its real price next to its name — from 5 credits (about $0.05) per image with Qwen Image Edit (larger photos cost 5.7 credits, about $0.06, per megapixel), 8 credits (about $0.08) with Seedream 4.5, 11 credits (about $0.11) with FLUX Kontext, 15 credits (about $0.15) with Nano Banana Edit, up to 30–90 credits (about $0.30–$0.90) with GPT Image 2 depending on quality."
   },
   {
@@ -804,7 +804,7 @@
    "resolution": null,
    "kind": "image",
    "source": "https://www.wandura.ai/face-swap",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "At 15 credits (about $0.15) per swap you can produce a consistent character across dozens of shots — twenty swaps cost 300 credits (about $3.00)."
   }
  ],
@@ -818,7 +818,7 @@
    "resolution": null,
    "kind": "audio",
    "source": "https://www.wandura.ai/m/minimax",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "MiniMax Speech 2.8 HD costs 20 credits (about $0.20) for every 1,000 characters of script."
   },
   {
@@ -830,7 +830,7 @@
    "resolution": null,
    "kind": "audio",
    "source": "https://www.wandura.ai/ai-music-generator",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "How much does a track cost? Prices are shown next to each model in the widget, and each generation is charged a flat price: Lyria 2 at 20 credits (about $0.20), Lyria 3 Pro at 16 credits (about $0.16), CassetteAI SFX at 2 credits (about $0.02), ElevenLabs Sound Effects at 3 credits (about $0.03) and Mirelo SFX 1.6 at 8 credits (about $0.08)."
   },
   {
@@ -842,7 +842,7 @@
    "resolution": null,
    "kind": "audio",
    "source": "https://www.wandura.ai/ai-music-generator",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "How much does a track cost? Prices are shown next to each model in the widget, and each generation is charged a flat price: Lyria 2 at 20 credits (about $0.20), Lyria 3 Pro at 16 credits (about $0.16), CassetteAI SFX at 2 credits (about $0.02), ElevenLabs Sound Effects at 3 credits (about $0.03) and Mirelo SFX 1.6 at 8 credits (about $0.08)."
   },
   {
@@ -854,7 +854,7 @@
    "resolution": null,
    "kind": "audio",
    "source": "https://www.wandura.ai/ai-music-generator",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "How much does a track cost? Prices are shown next to each model in the widget, and each generation is charged a flat price: Lyria 2 at 20 credits (about $0.20), Lyria 3 Pro at 16 credits (about $0.16), CassetteAI SFX at 2 credits (about $0.02), ElevenLabs Sound Effects at 3 credits (about $0.03) and Mirelo SFX 1.6 at 8 credits (about $0.08)."
   },
   {
@@ -866,7 +866,7 @@
    "resolution": null,
    "kind": "audio",
    "source": "https://www.wandura.ai/ai-music-generator",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "How much does a track cost? Prices are shown next to each model in the widget, and each generation is charged a flat price: Lyria 2 at 20 credits (about $0.20), Lyria 3 Pro at 16 credits (about $0.16), CassetteAI SFX at 2 credits (about $0.02), ElevenLabs Sound Effects at 3 credits (about $0.03) and Mirelo SFX 1.6 at 8 credits (about $0.08)."
   },
   {
@@ -878,7 +878,7 @@
    "resolution": null,
    "kind": "audio",
    "source": "https://www.wandura.ai/ai-music-generator",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "How much does a track cost? Prices are shown next to each model in the widget, and each generation is charged a flat price: Lyria 2 at 20 credits (about $0.20), Lyria 3 Pro at 16 credits (about $0.16), CassetteAI SFX at 2 credits (about $0.02), ElevenLabs Sound Effects at 3 credits (about $0.03) and Mirelo SFX 1.6 at 8 credits (about $0.08)."
   },
   {
@@ -890,7 +890,7 @@
    "resolution": null,
    "kind": "audio",
    "source": "https://www.wandura.ai/lip-sync",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Kling Lipsync is the cheaper draft option at 15 credits (about $0.15) per run, so iterating on short clips stays inexpensive."
   },
   {
@@ -902,7 +902,7 @@
    "resolution": null,
    "kind": "audio",
    "source": "https://www.wandura.ai/lip-sync",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Which models are available and how much do they cost? Sync Lipsync v2 is the default: 90 credits (about $0.90) per run in Fast quality and 150 credits (about $1.50) in Pro quality."
   },
   {
@@ -914,7 +914,7 @@
    "resolution": null,
    "kind": "audio",
    "source": "https://www.wandura.ai/lip-sync",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Which models are available and how much do they cost? Sync Lipsync v2 is the default: 90 credits (about $0.90) per run in Fast quality and 150 credits (about $1.50) in Pro quality."
   }
  ],
@@ -923,21 +923,21 @@
    "model": "Kling 3.0",
    "credits_per_second": 13,
    "source": "https://www.wandura.ai/ai-camera-control",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "How much does it cost? Per second of generated video, with each model's price shown in the widget before you create: LTX 2.3 Fast at 6.8 credits (about $0.07), Kling 3.0 at 13 credits (about $0.13), and Veo 3.1 at 54.5–75 credits (about $0.55–$0.75)."
   },
   {
    "model": "LTX 2.3 Fast",
    "credits_per_second": 6.8,
    "source": "https://www.wandura.ai/ai-camera-control",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "Try AI Camera Control For Marketers: Product Shots That Feel Filmed An orbit around a sneaker or a slow dolly toward a bottle reads instantly as a commercial — the orbit shot playing here was drafted on LTX 2.3 Fast at 6.8 credits (about $0.07) per second with the preset alone."
   },
   {
    "model": "Kling 3.0 Motion Control",
    "credits_per_second": 19.6,
    "source": "https://www.wandura.ai/mimic-motion",
-   "read": "2026-11-12",
+   "read": "2026-11-13",
    "quote": "How many credits does Mimic Motion use? Kling 3.0 Motion Control is priced per second of the motion video you add: 19.6 credits (about $0.20) per second, so a 5-second template costs 98 credits (about $0.98), 10 seconds costs 196 credits and 30 seconds costs 588 credits."
   }
  ],
@@ -947,40 +947,40 @@
    "kind": "video",
    "note": "Required for the Weekly Challenge. No credit price on its pages; the price is shown on Generate.",
    "source": "https://www.wandura.ai/m/seedance-2-0",
-   "read": "2026-11-12"
+   "read": "2026-11-13"
   },
   {
    "model": "Seedance 2.0 Mini",
    "kind": "video",
    "note": "Listed as \"Cheapest · 720p max\". Price shown on Generate.",
    "source": "https://www.wandura.ai/m/seedance-2-0",
-   "read": "2026-11-12"
+   "read": "2026-11-13"
   },
   {
    "model": "Veo 3.1 Fast",
    "kind": "video",
    "note": "Listed as \"Quicker · audio\". Price shown on Generate.",
    "source": "https://www.wandura.ai/m/veo-3-1",
-   "read": "2026-11-12"
+   "read": "2026-11-13"
   },
   {
    "model": "Veo 3.1 Lite",
    "kind": "video",
    "note": "Listed as \"Budget · audio\". Price shown on Generate.",
    "source": "https://www.wandura.ai/m/veo-3-1",
-   "read": "2026-11-12"
+   "read": "2026-11-13"
   },
   {
    "model": "GPT Image 2",
    "kind": "image",
    "note": "How much does a generation cost? Each model shows its real price next to its name — for example 5 credits (about $0.05) per image with Ideogram V4 at Turbo speed, 6 (about $0.06) with FLUX 1.1 Pro, 6 (about $0.06) with Seedream 5.0 Lite, 18 (about $0.18) with Nano Banana Pro, and 3 to 90 (about $0.03–$0.90) with GPT Image 2 depending on quality.",
    "source": "https://www.wandura.ai/text-to-image",
-   "read": "2026-11-12"
+   "read": "2026-11-13"
   }
  ],
  "challenge": {
   "source": "https://www.wandura.ai/contests/film-weekly-challenges",
-  "read": "2026-11-12",
+  "read": "2026-11-13",
   "week": "Week 02",
   "genre": "Horror",
   "theme": "The Knock",
@@ -1450,6 +1450,6 @@
     ]
    }
   },
-  "status_note": "The page still shows \"Open now\", but the 10 Nov 23:59 UTC film deadline it lists has passed (read 12 Nov 2026)."
+  "status_note": "The page still shows \"Open now\", but the 10 Nov 23:59 UTC film deadline it lists has passed (read 13 Nov 2026)."
  }
 }
